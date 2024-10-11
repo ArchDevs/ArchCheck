@@ -1,0 +1,6 @@
+name: ArchCheck
+version: '0.1'
+main: me.arch.archcheck.ArchCheck
+api-version: '1.16'
+authors: [ArchDev (Archonixs)]
+description: Plugin to help moderation cehck players for hacks
