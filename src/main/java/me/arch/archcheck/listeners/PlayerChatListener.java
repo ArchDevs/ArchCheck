@@ -9,6 +9,7 @@ public class PlayerChatListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerChat(AsyncPlayerChatEvent e) {
+        // TODO Add a messenger logic between checker and player
 
     }
 }

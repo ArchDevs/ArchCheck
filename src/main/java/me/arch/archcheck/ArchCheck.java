@@ -1,6 +1,10 @@
 package me.arch.archcheck;
 
 import lombok.Getter;
+import me.arch.archcheck.commands.CommandManager;
+import me.arch.archcheck.listeners.PlayerChatListener;
+import me.arch.archcheck.listeners.PlayerItemListener;
+import me.arch.archcheck.listeners.PlayerMoveListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -17,6 +21,13 @@ public final class ArchCheck extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this; // Initializing var instance as an ArchCheck class;
+
+        // Load commands
+        getCommand("check").setExecutor(new CommandManager());
+        // Load Listeners
+        getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerItemListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
     }
 
     @Override
