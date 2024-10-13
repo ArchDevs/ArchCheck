@@ -1,7 +1,9 @@
 package me.arch.archcheck.listeners;
 
 import me.arch.archcheck.ArchCheck;
+import me.arch.archcheck.ConfigManager;
 import me.arch.archcheck.utils.ChatUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -23,15 +25,15 @@ public class PlayerChatListener implements Listener {
             Player checker = player.getServer().getPlayer(ArchCheck.getPlayersOnCheck().get(playerUUID));
 
             if (checker == null) {
-                player.sendMessage(ChatUtil.format("Checker is not available."));
+                player.sendMessage(ChatUtil.format(ConfigManager.getString("messages.checker-not-found", "&cChecker is not online")));
                 ChatUtil.executeConsole("check stop " + player.getName());
                 return;
             }
 
             // Block commands for the player
             if (message.startsWith("/")) {
-                checker.sendMessage(ChatUtil.format("Player tried to use command: " + message));
-                player.sendMessage(ChatUtil.format("You can't use commands while on check."));
+                checker.sendMessage(ChatUtil.format(ConfigManager.getString("player-used-command", "&fPlayer tried to use command") + ChatColor.RESET + "" + message));
+                player.sendMessage(ChatUtil.format(ConfigManager.getString("no-command-on-check", "&cYou can't use commands while on check!")));
                 e.setCancelled(true);
                 return;
             }

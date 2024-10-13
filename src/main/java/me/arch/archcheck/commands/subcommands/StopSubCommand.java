@@ -28,7 +28,7 @@ public class StopSubCommand extends SubCommand {
     public void perform(Player checker, String[] args) {
         final Player player = Bukkit.getPlayerExact(args[1]);
         if (player == null) {
-            checker.sendMessage(ChatUtil.format(ConfigManager.getString("messages.player-offline", "&cPlayer not found")));
+            checker.sendMessage(ChatUtil.format(ConfigManager.getString("messages.player-not-found", "&cPlayer not found")));
             return;
         }
 

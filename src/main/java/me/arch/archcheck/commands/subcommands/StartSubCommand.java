@@ -27,9 +27,13 @@ public class StartSubCommand extends SubCommand {
 
     @Override
     public void perform(Player checker, String[] args) {
+        if (ArchCheck.getPlayersOnCheck().containsValue(checker.getUniqueId())) {
+            checker.sendMessage(ChatUtil.format(ConfigManager.getString("checker-already-checking", "&cYou are already checking player")));
+            return;
+        }
         final Player player = Bukkit.getPlayerExact(args[1]);
         if (player == null) {
-            checker.sendMessage(ChatUtil.format(ConfigManager.getString("messages.player-offline", "&cPlayer not found")));
+            checker.sendMessage(ChatUtil.format(ConfigManager.getString("messages.player-not-found", "&cPlayer not found")));
             return;
         }
 
