@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 
 public class BossBarUtil {
 
+    // TODO Make bossbar for time check. Task for updating bossbar every second
+
     private static BossBar bossBar;
 
     public static void startBossBar(Player player) {

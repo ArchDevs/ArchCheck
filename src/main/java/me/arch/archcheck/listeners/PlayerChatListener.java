@@ -26,7 +26,7 @@ public class PlayerChatListener implements Listener {
 
             if (checker == null) {
                 player.sendMessage(ChatUtil.format(ConfigManager.getString("messages.checker-not-found", "&cChecker is not online")));
-                ChatUtil.executeConsole("check stop " + player.getName());
+                ChatUtil.executeConsole("check stop " + player.getName()); // Stop check if checker left game
                 return;
             }
 

@@ -22,6 +22,8 @@ public class StartCheckUtil {
         }
     }
 
+
+    // TODO Add check option on time
 //    public static void startCheck(Player player, int time) {
 //
 //    }
