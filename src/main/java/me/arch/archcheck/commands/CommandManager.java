@@ -1,6 +1,7 @@
 package me.arch.archcheck.commands;
 
 import me.arch.archcheck.commands.subcommands.StartSubCommand;
+import me.arch.archcheck.commands.subcommands.StopSubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,6 +15,7 @@ public class CommandManager implements CommandExecutor {
 
     public CommandManager() {
         subCommands.add(new StartSubCommand());
+        subCommands.add(new StopSubCommand());
     }
 
     @Override
