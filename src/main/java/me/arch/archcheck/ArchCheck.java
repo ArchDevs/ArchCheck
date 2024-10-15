@@ -1,6 +1,7 @@
 package me.arch.archcheck;
 
 import lombok.Getter;
+import me.arch.archcheck.commands.CheckTabCompleter;
 import me.arch.archcheck.commands.CommandManager;
 import me.arch.archcheck.listeners.PlayerChatListener;
 import me.arch.archcheck.listeners.PlayerItemListener;
@@ -32,6 +33,7 @@ public final class ArchCheck extends JavaPlugin {
 
         // Load commands
         getCommand("archcheck").setExecutor(new CommandManager());
+        getCommand("archcheck").setTabCompleter(new CheckTabCompleter());
         // Load Listeners
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerItemListener(), this);
