@@ -1,11 +1,14 @@
 package me.arch.archcheck.commands.subcommands;
 
 import me.arch.archcheck.ConfigManager;
+import me.arch.archcheck.commands.CommandManager;
 import me.arch.archcheck.commands.SubCommand;
 import me.arch.archcheck.utils.BossBarUtil;
 import me.arch.archcheck.utils.ChatUtil;
 import me.arch.archcheck.utils.StopCheckUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class StopSubCommand extends SubCommand {

@@ -17,7 +17,7 @@ public class BossBarUtil {
         BarColor color = BarColor.valueOf(ConfigManager.getString("bossbar.color", "RED").toUpperCase());
 
         bossBar = Bukkit.createBossBar(
-                ConfigManager.getString("bossbar.title", "&fCheck"),
+                ChatUtil.format(ConfigManager.getString("bossbar.title", "&fCheck")),
                 color,
                 BarStyle.SOLID);
 

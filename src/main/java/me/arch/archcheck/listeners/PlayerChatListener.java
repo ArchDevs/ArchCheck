@@ -2,7 +2,9 @@ package me.arch.archcheck.listeners;
 
 import me.arch.archcheck.ArchCheck;
 import me.arch.archcheck.ConfigManager;
+import me.arch.archcheck.utils.BossBarUtil;
 import me.arch.archcheck.utils.ChatUtil;
+import me.arch.archcheck.utils.StopCheckUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,7 +28,8 @@ public class PlayerChatListener implements Listener {
 
             if (checker == null) {
                 player.sendMessage(ChatUtil.format(ConfigManager.getString("messages.checker-not-found", "&cChecker is not online")));
-                ChatUtil.executeConsole("check stop " + player.getName()); // Stop check if checker left game
+                StopCheckUtil.stopCheck(player); // Stop check if checker left game
+                BossBarUtil.stopBossBar(player);
                 return;
             }
 

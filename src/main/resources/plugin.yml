@@ -3,4 +3,15 @@ version: '${version}'
 main: me.arch.archcheck.ArchCheck
 api-version: '1.16'
 authors: [ArchDev (Archonixs)]
-description: Plugin to help moderation cehck players for hacks
+description: Plugin to help moderation check players for hacks
+commands:
+  archcheck:
+    description: Command to check player
+    permission: archcheck.check
+    aliases:
+      - check
+      - acheck
+      - archc
+permissions:
+  archcheck.check:
+    description: Permission that allows to check players

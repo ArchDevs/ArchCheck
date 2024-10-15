@@ -10,6 +10,8 @@ bossbar:
 messages:
   # General messages
   player-not-found: "&cPlayer not found"
+  no-arguments: "&cPlease provide some arguments to command"
+  config-reload: "&aConfig has been reloaded"
   
   # Messages on/while/before check
   already-on-check: "&cPlayer is already on check"
