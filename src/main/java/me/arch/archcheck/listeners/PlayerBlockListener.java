@@ -4,12 +4,12 @@ import me.arch.archcheck.ArchCheck;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.block.BlockBreakEvent;
 
-public class PlayerMoveListener implements Listener {
+public class PlayerBlockListener implements Listener {
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent e) {
+    public void onPlayerBlockBreak(BlockBreakEvent e) {
         if (!(e instanceof Player)) return;
         final Player player = e.getPlayer();
 

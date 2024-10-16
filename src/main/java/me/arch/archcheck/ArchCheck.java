@@ -3,24 +3,19 @@ package me.arch.archcheck;
 import lombok.Getter;
 import me.arch.archcheck.commands.CheckTabCompleter;
 import me.arch.archcheck.commands.CommandManager;
-import me.arch.archcheck.listeners.PlayerChatListener;
-import me.arch.archcheck.listeners.PlayerItemListener;
-import me.arch.archcheck.listeners.PlayerLeaveListener;
-import me.arch.archcheck.listeners.PlayerMoveListener;
-import org.bukkit.Bukkit;
+import me.arch.archcheck.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 public final class ArchCheck extends JavaPlugin {
 
     @Getter // First UUID is for player on check (target), second UUID is for player who is checking
     private static final HashMap<UUID, UUID> playersOnCheck = new HashMap<>();
 
-    @Getter
-    private final Logger logger = Bukkit.getLogger();
+    @Getter // UUID is for player and Long for time in milliseconds
+    private static final HashMap<UUID, Long> checkTimer = new HashMap<>();
 
     @Getter // Lombok impl for getting instance
     private static ArchCheck instance; // Var for fast class access
@@ -39,6 +34,7 @@ public final class ArchCheck extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerItemListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerBlockListener(), this);
     }
 
     @Override

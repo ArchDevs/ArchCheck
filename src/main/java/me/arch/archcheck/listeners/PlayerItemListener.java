@@ -21,6 +21,7 @@ public class PlayerItemListener implements Listener {
 
     @EventHandler
     public void onItemPickup(PlayerPickupItemEvent e) {
+        if (!(e instanceof Player)) return;
         final Player player = e.getPlayer();
 
         if (ArchCheck.getPlayersOnCheck().containsKey(player.getUniqueId())) {
