@@ -7,6 +7,8 @@ import me.arch.archcheck.utils.BossBarUtil;
 import me.arch.archcheck.utils.ChatUtil;
 import me.arch.archcheck.utils.StartCheckUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public class StartSubCommand extends SubCommand {
@@ -35,6 +37,15 @@ public class StartSubCommand extends SubCommand {
         if (player == null) {
             checker.sendMessage(ChatUtil.format(ConfigManager.getString("messages.player-not-found", "&cPlayer not found")));
             return;
+        }
+
+        World world = Bukkit.getWorld(ConfigManager.getString("tp-player-on-check-pos", "world"));
+        int XCoordinate = ConfigManager.getInt("tp-player-on-check-pos.x", 100);
+        int YCoordinate = ConfigManager.getInt("tp-player-on-check-pos.y", 100);
+        int ZCoordinate = ConfigManager.getInt("tp-player-on-check-pos.z", 100);
+
+        if (ConfigManager.getBool("teleport-player-on-check")) {
+            player.teleport(new Location(world, XCoordinate, YCoordinate, ZCoordinate));
         }
 
         BossBarUtil.startBossBar(player);

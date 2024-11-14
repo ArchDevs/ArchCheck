@@ -3,6 +3,13 @@
 # Discord: archonixs
 # dev: ArchDev
 
+teleport-player-on-check: true
+tp-player-on-check-pos:
+  world: "world"
+  x: 100
+  y: 100
+  z: 100
+
 bossbar:
   title: "&cCheck"
   color: RED
