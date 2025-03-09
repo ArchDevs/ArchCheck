@@ -15,8 +15,6 @@ public class StartCheckUtil {
         if (!ArchCheck.getPlayersOnCheck().containsKey(playerID)) {
             // If player is not on check add him
             ArchCheck.getPlayersOnCheck().put(playerID, checkerID);
-
-
         } else {
             player.sendMessage(ChatUtil.format(ConfigManager.getString("messages.already-on-check", "&cPlayer is already on check")));
         }

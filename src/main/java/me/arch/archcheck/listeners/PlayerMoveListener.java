@@ -11,10 +11,7 @@ public class PlayerMoveListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         if (!(e instanceof Player)) return;
-        final Player player = e.getPlayer();
 
-        if (ArchCheck.getPlayersOnCheck().containsKey(player.getUniqueId())) {
-            e.setCancelled(true);
-        }
+        if (ArchCheck.getPlayersOnCheck().containsKey(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
     }
 }

@@ -84,11 +84,10 @@ public class PlayerChatListener implements Listener {
 
     // Helper method to get the player being checked by a checker
     private UUID getCheckedPlayer(UUID checkerUUID) {
-        for (UUID playerUUID : ArchCheck.getPlayersOnCheck().keySet()) {
-            if (ArchCheck.getPlayersOnCheck().get(playerUUID).equals(checkerUUID)) {
-                return playerUUID;
-            }
-        }
-        return null;
+        return ArchCheck.getPlayersOnCheck().keySet()
+                .stream()
+                .filter(playerUUID -> ArchCheck.getPlayersOnCheck().get(playerUUID).equals(checkerUUID))
+                .findFirst()
+                .orElse(null);
     }
 }

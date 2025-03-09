@@ -4,7 +4,6 @@ import me.arch.archcheck.ArchCheck;
 import me.arch.archcheck.ConfigManager;
 import me.arch.archcheck.commands.SubCommand;
 import me.arch.archcheck.utils.ChatUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class ReloadSubCommand extends SubCommand {

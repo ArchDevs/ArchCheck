@@ -9,7 +9,7 @@ import java.util.UUID;
 public class StopCheckUtil {
 
     public static void stopCheck(Player player) {
-        final UUID playerID = player.getUniqueId();
+        UUID playerID = player.getUniqueId();
 
         if (ArchCheck.getPlayersOnCheck().containsKey(playerID)) {
             // If player is on check remove him

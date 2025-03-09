@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class PlayerLeaveListener implements Listener {
@@ -18,6 +18,7 @@ public class PlayerLeaveListener implements Listener {
     public void onPlayerLeave(PlayerQuitEvent e) {
         final Player player = e.getPlayer();
         Player checker = getChecker(player);
+        Player checkedPlayer = getCheckedPlayer(player);
 
         // If the player leaving is being checked, notify the checker
         if (checker != null && checker.isOnline()) {
@@ -27,12 +28,8 @@ public class PlayerLeaveListener implements Listener {
         }
 
         // Now check if the player leaving is a checker, notify the checked player
-        if (isChecker(player)) {
-            Player checkedPlayer = getCheckedPlayer(player);
-            if (checkedPlayer != null && checkedPlayer.isOnline()) {
-                checkedPlayer.sendMessage("Your checker (" + player.getName() + ") has left the game.");
-            }
-        }
+        if (isChecker(player) && checkedPlayer != null && checkedPlayer.isOnline())
+            checkedPlayer.sendMessage("Your checker (" + player.getName() + ") has left the game.");
     }
 
     // Helper method to get the checker for a player being checked
@@ -46,20 +43,17 @@ public class PlayerLeaveListener implements Listener {
 
     // Helper method to check if a player is a checker
     private static boolean isChecker(Player player) {
-        UUID playerUUID = player.getUniqueId();
-        return ArchCheck.getPlayersOnCheck().containsValue(playerUUID);
+        return ArchCheck.getPlayersOnCheck().containsValue(player.getUniqueId());
     }
 
     // Helper method to get the player being checked by a checker
     private static Player getCheckedPlayer(Player checker) {
-        UUID checkerUUID = checker.getUniqueId();
-        for (Map.Entry<UUID, UUID> entry : ArchCheck.getPlayersOnCheck().entrySet()) {
-            if (entry.getValue().equals(checkerUUID)) {
-                UUID playerUUID = entry.getKey();
-                return Bukkit.getPlayer(playerUUID);
-            }
-        }
-        return null;
+        return ArchCheck.getPlayersOnCheck().entrySet().stream()
+                .filter(entry -> entry.getValue().equals(checker.getUniqueId()))
+                .map(entry -> Bukkit.getPlayer(entry.getKey()))
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElse(null);
     }
 
 }

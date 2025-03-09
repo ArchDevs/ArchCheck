@@ -6,7 +6,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -27,11 +26,7 @@ public class CheckTabCompleter implements TabCompleter {
     }
 
     private static List<String> getOnlinePlayers() {
-        List<String> playerNames = new ArrayList<>();
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            playerNames.add(player.getName());
-        }
-        return playerNames;
+        return Bukkit.getOnlinePlayers().stream().map(Player::getName).toList();
     }
 
 }
