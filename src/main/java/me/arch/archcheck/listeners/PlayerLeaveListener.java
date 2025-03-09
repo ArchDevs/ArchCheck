@@ -22,7 +22,7 @@ public class PlayerLeaveListener implements Listener {
         // If the player leaving is being checked, notify the checker
         if (checker != null && checker.isOnline()) {
             StopCheckUtil.stopCheck(player); // Stop check if checker left game
-            BossBarUtil.stopBossBar(player);
+            BossBarUtil.removePlayerFromBossBar(player);
             checker.sendMessage("The player you were checking (" + player.getName() + ") has left the game.");
         }
 

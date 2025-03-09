@@ -48,7 +48,7 @@ public class StartSubCommand extends SubCommand {
             player.teleport(new Location(world, XCoordinate, YCoordinate, ZCoordinate));
         }
 
-        BossBarUtil.startBossBar(player);
+        BossBarUtil.addPlayerToBossBar(player);
         StartCheckUtil.startCheck(player, checker);
     }
 }

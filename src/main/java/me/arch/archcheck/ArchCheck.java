@@ -29,6 +29,7 @@ public final class ArchCheck extends JavaPlugin {
         // Load commands
         getCommand("archcheck").setExecutor(new CommandManager());
         getCommand("archcheck").setTabCompleter(new CheckTabCompleter());
+
         // Load Listeners
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerItemListener(), this);
@@ -39,7 +40,6 @@ public final class ArchCheck extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
 
         instance = null;
     }

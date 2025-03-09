@@ -30,7 +30,7 @@ public class PlayerChatListener implements Listener {
             if (checker == null) {
                 player.sendMessage(ChatUtil.format(ConfigManager.getString("messages.checker-not-found", "&cChecker is not online")));
                 StopCheckUtil.stopCheck(player); // Stop check if checker left game
-                BossBarUtil.stopBossBar(player);
+                BossBarUtil.removePlayerFromBossBar(player);
                 return;
             }
 
@@ -65,7 +65,7 @@ public class PlayerChatListener implements Listener {
             if (checker == null) {
                 player.sendMessage(ChatUtil.format(ConfigManager.getString("messages.checker-not-found", "&cChecker is not online")));
                 StopCheckUtil.stopCheck(player); // Stop check if checker left game
-                BossBarUtil.stopBossBar(player);
+                BossBarUtil.removePlayerFromBossBar(player);
                 return;
             }
 

@@ -13,7 +13,7 @@ public class BossBarUtil {
 
     private static BossBar bossBar;
 
-    public static void startBossBar(Player player) {
+    private static void createBossBar() {
         BarColor color = BarColor.valueOf(ConfigManager.getString("bossbar.color", "RED").toUpperCase());
 
         bossBar = Bukkit.createBossBar(
@@ -21,10 +21,14 @@ public class BossBarUtil {
                 color,
                 BarStyle.SOLID);
 
+    }
+
+    public static void addPlayerToBossBar(Player player) {
+        createBossBar();
         bossBar.addPlayer(player);
     }
 
-    public static void stopBossBar(Player player) {
+    public static void removePlayerFromBossBar(Player player) {
         bossBar.removePlayer(player);
     }
 
