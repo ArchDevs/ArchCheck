@@ -1,6 +1,6 @@
 package me.arch.archcheck.utils;
 
-import me.arch.archcheck.ConfigManager;
+import me.arch.archcheck.utils.config.ConfigValues;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -14,11 +14,10 @@ public class BossBarUtil {
     private static BossBar bossBar;
 
     private static void createBossBar() {
-        BarColor color = BarColor.valueOf(ConfigManager.getString("bossbar.color", "RED").toUpperCase());
 
         bossBar = Bukkit.createBossBar(
-                ChatUtil.format(ConfigManager.getString("bossbar.title", "&fCheck")),
-                color,
+                ChatUtil.format(ConfigValues.bossbarTitle),
+                BarColor.valueOf(ConfigValues.bossbarColor.toUpperCase()),
                 BarStyle.SOLID);
 
     }

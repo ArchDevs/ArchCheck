@@ -1,6 +1,6 @@
 package me.arch.archcheck.listeners;
 
-import me.arch.archcheck.ArchCheck;
+import me.arch.archcheck.managers.CheckManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +12,6 @@ public class PlayerBlockListener implements Listener {
     public void onPlayerBlockBreak(BlockBreakEvent e) {
         if (!(e instanceof Player)) return;
 
-        if (ArchCheck.getPlayersOnCheck().containsKey(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
+        if (CheckManager.isOnCheck(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
     }
 }

@@ -1,11 +1,12 @@
-package me.arch.archcheck.commands;
+package me.arch.archcheck.managers;
 
 import lombok.Getter;
-import me.arch.archcheck.ConfigManager;
+import me.arch.archcheck.commands.SubCommand;
 import me.arch.archcheck.commands.subcommands.ReloadSubCommand;
 import me.arch.archcheck.commands.subcommands.StartSubCommand;
 import me.arch.archcheck.commands.subcommands.StopSubCommand;
 import me.arch.archcheck.utils.ChatUtil;
+import me.arch.archcheck.utils.config.ConfigValues;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,10 +15,10 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class CommandManager implements CommandExecutor {
 
-    @Getter
-    private List<SubCommand> subCommands = new ArrayList<>();
+    private final List<SubCommand> subCommands = new ArrayList<>();
 
     public CommandManager() {
         subCommands.add(new StartSubCommand());
@@ -27,11 +28,10 @@ public class CommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) return true;
-        Player player = (Player) sender;
+        if (!(sender instanceof Player player)) return true;
 
         if (args.length == 0) {
-            player.sendMessage(ChatUtil.format(ConfigManager.getString("no-arguments", "&cPlease provide some arguments to command")));
+            player.sendMessage(ChatUtil.format(ConfigValues.noArgs));
             return true;
         }
         for (int i = 0; i < getSubCommands().size(); i++) {

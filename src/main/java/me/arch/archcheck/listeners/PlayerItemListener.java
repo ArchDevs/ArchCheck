@@ -1,6 +1,6 @@
 package me.arch.archcheck.listeners;
 
-import me.arch.archcheck.ArchCheck;
+import me.arch.archcheck.managers.CheckManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,18 +12,18 @@ public class PlayerItemListener implements Listener {
 
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent e) {
-        if (ArchCheck.getPlayersOnCheck().containsKey(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
+        if (CheckManager.isOnCheck(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
     }
 
     @EventHandler
     public void onItemPickup(PlayerPickupItemEvent e) {
         if (!(e instanceof Player)) return;
 
-        if (ArchCheck.getPlayersOnCheck().containsKey(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
+        if (CheckManager.isOnCheck(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
     }
 
     @EventHandler
     public void onItemConsume(PlayerItemConsumeEvent e) {
-        if (ArchCheck.getPlayersOnCheck().containsKey(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
+        if (CheckManager.isOnCheck(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
     }
 }

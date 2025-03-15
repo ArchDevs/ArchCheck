@@ -1,5 +1,6 @@
-package me.arch.archcheck;
+package me.arch.archcheck.managers;
 
+import me.arch.archcheck.ArchCheck;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigManager {

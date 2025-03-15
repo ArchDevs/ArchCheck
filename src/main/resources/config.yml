@@ -24,8 +24,7 @@ messages:
   already-on-check: "&cPlayer is already on check"
   not-on-check: "&cPlayer is not on check"
   
-  checker-already-checking: "&cYou are already checking player"
-  checker-not-found: "&cChecker is not online"
+  already-checking: "&cYou are already checking player"
   
   player-used-command: "&fPlayer tried to use command"
-  no-command-on-check: "&cYou can't use commands while on check!"
+  no-commands-on-check: "&cYou can't use commands while on check!"
