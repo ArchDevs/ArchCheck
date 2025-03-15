@@ -1,9 +1,9 @@
 package me.arch.archcheck.utils.config;
 
-import lombok.experimental.FieldNameConstants;
+import lombok.experimental.FieldDefaults;
 import me.arch.archcheck.managers.ConfigManager;
 
-@FieldNameConstants
+@FieldDefaults(makeFinal = true)
 public class ConfigValues {
     // Teleport
     public static boolean teleportPlayerOnCheck = ConfigManager.getBool("teleport-player-on-check", false);

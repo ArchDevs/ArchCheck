@@ -28,7 +28,8 @@ public class CommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player player)) return true;
+        if (!(sender instanceof Player)) return true;
+        Player player = (Player) sender;
 
         if (args.length == 0) {
             player.sendMessage(ChatUtil.format(ConfigValues.noArgs));
