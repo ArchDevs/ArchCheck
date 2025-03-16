@@ -10,8 +10,6 @@ public class PlayerBlockListener implements Listener {
 
     @EventHandler
     public void onPlayerBlockBreak(BlockBreakEvent e) {
-        if (!(e instanceof Player)) return;
-
         if (CheckManager.isOnCheck(e.getPlayer().getUniqueId())) { e.setCancelled(true); }
     }
 }

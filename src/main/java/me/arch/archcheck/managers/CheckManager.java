@@ -13,22 +13,31 @@ import java.util.stream.Collectors;
 public class CheckManager {
     private static final HashMap<UUID, CheckSession> activeChecks = new HashMap<>();
 
-    public static void startCheck(UUID player, UUID checker) { activeChecks.put(player, new CheckSession(player, checker)); }
+    public static void startCheck(UUID player, UUID checker) {
+        CheckSession session = new CheckSession(player, checker);
+        activeChecks.put(player, session);
+    }
 
-    public static void stopCheck(UUID player, UUID checker) { activeChecks.remove(player); }
+    public static void stopCheck(UUID player, UUID checker) {
+        activeChecks.remove(player);
+    }
 
     public static CheckSession getCheckSession(UUID player) { return activeChecks.get(player); }
 
-    public static boolean isOnCheck(UUID player) { return  activeChecks.containsKey(player); }
+    public static boolean isOnCheck(UUID player) { return activeChecks.containsKey(player); }
 
-    public static boolean isPlayerChecker(UUID player) { return player.equals(getCheckSession(player).getCheckerUuid()); }
+    public static boolean isPlayerChecker(UUID checker) {
+        return activeChecks.values().stream().anyMatch(session -> session.getCheckerUuid().equals(checker));
+    }
 
     public static Player getChecker(Player player) {
-        if (isOnCheck(player.getUniqueId())) {
-            UUID checkerUUID = getCheckSession(player.getUniqueId()).getCheckerUuid();
-            return Bukkit.getPlayer(checkerUUID);
-        }
-        return null;
+        CheckSession session = getCheckSession(player.getUniqueId());
+        return session != null ? Bukkit.getPlayer(session.getCheckerUuid()) : null;
+    }
+
+    public static Player getPlayer(Player player) {
+        CheckSession session = getCheckSession(player.getUniqueId());
+        return session != null ? Bukkit.getPlayer(session.getPlayerUuid()) : null;
     }
 
     public static List<Player> getPlayersOnCheck() {

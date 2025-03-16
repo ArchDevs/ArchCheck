@@ -11,7 +11,7 @@ public class PlayerLeaveListener implements Listener {
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent e) {
-        final Player player = e.getPlayer();
+        Player player = e.getPlayer();
         Player checker = CheckManager.getChecker(player);
 
         // If the player leaving is being checked, notify the checker
