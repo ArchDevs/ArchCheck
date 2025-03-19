@@ -4,14 +4,12 @@ import me.arch.archcheck.utils.CheckSession;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CheckManager {
     private static final HashMap<UUID, CheckSession> activeChecks = new HashMap<>();
+    private static final Collection<CheckSession> activeSessions = activeChecks.values();
 
     public static void startCheck(UUID player, UUID checker) {
         CheckSession session = new CheckSession(player, checker);
@@ -35,16 +33,20 @@ public class CheckManager {
         return session != null ? Bukkit.getPlayer(session.getCheckerUuid()) : null;
     }
 
-    public static Player getPlayer(Player player) {
-        CheckSession session = getCheckSession(player.getUniqueId());
-        return session != null ? Bukkit.getPlayer(session.getPlayerUuid()) : null;
-    }
-
     public static List<Player> getPlayersOnCheck() {
         return activeChecks.values().stream()
                 .map(session -> Bukkit.getPlayer(session.getPlayerUuid()))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+    }
+
+    public static Player getSuspectForChecker(Player checker) {
+        for (CheckSession session : activeSessions) {
+            if (checker.getUniqueId().equals(session.getCheckerUuid())) {
+                return Bukkit.getPlayer(session.getPlayerUuid());
+            }
+        }
+        return null;
     }
 
 }
