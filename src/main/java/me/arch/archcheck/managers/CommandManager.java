@@ -31,10 +31,16 @@ public class CommandManager implements CommandExecutor {
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender;
 
+        if (!player.hasPermission("archcheck.check")) {
+            player.sendMessage(ChatUtil.format(ConfigValues.noPerms));
+            return true;
+        }
+
         if (args.length == 0) {
             player.sendMessage(ChatUtil.format(ConfigValues.noArgs));
             return true;
         }
+
         for (int i = 0; i < getSubCommands().size(); i++) {
             if (args[0].equalsIgnoreCase(getSubCommands().get(i).getName())) {
                 getSubCommands().get(i).perform(player, args);

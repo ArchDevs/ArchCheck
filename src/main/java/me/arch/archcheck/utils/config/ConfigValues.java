@@ -20,6 +20,7 @@ public class ConfigValues {
     public static String noPlayer = ConfigManager.getString("messages.player-not-found", "&cPlayer not found");
     public static String noArgs = ConfigManager.getString("messages.no-arguments", "&cPlease provide some arguments to command");
     public static String configReloaded = ConfigManager.getString("messages.config-reload", "&aConfig has been reloaded");
+    public static String noPerms = ConfigManager.getString("messages.no-permission", "&cYou do not have permission to use this command");
 
     public static String alreadyOnCheck = ConfigManager.getString("messages.already-on-check", "&cPlayer is already on check");
 
