@@ -1,7 +1,7 @@
 package me.arch.archcheck;
 
 import lombok.Getter;
-import me.arch.archcheck.commands.CheckTabCompleter;
+import me.arch.archcheck.tabcompleter.CheckTabCompleter;
 import me.arch.archcheck.managers.CommandManager;
 import me.arch.archcheck.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;

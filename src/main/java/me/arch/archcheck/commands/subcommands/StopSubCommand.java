@@ -2,6 +2,7 @@ package me.arch.archcheck.commands.subcommands;
 
 import me.arch.archcheck.managers.CheckManager;
 import me.arch.archcheck.commands.SubCommand;
+import me.arch.archcheck.utils.BossBarUtil;
 import me.arch.archcheck.utils.ChatUtil;
 import me.arch.archcheck.utils.config.ConfigValues;
 import org.bukkit.Bukkit;
@@ -25,6 +26,8 @@ public class StopSubCommand extends SubCommand {
             return;
         }
 
+        BossBarUtil.removeBossBar(player, checker);
+        CheckManager.removeEffects(player);
         CheckManager.stopCheck(player.getUniqueId(), checker.getUniqueId());
     }
 }

@@ -1,8 +1,10 @@
 package me.arch.archcheck.managers;
 
-import me.arch.archcheck.utils.CheckSession;
+import me.arch.archcheck.logic.CheckSession;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -47,6 +49,14 @@ public class CheckManager {
             }
         }
         return null;
+    }
+
+    public static void applyEffects(Player player) {
+        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 999999, 1, true, true));
+    }
+
+    public static void removeEffects(Player player) {
+        player.removePotionEffect(PotionEffectType.BLINDNESS);
     }
 
 }

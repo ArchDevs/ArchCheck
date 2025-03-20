@@ -9,26 +9,23 @@ import org.bukkit.entity.Player;
 
 public class BossBarUtil {
 
-    // TODO Make bossbar for time check. Task for updating bossbar every second
-
     private static BossBar bossBar;
 
-    private static void createBossBar() {
-
+    public static void createBossBar(Player player, Player checker) {
         bossBar = Bukkit.createBossBar(
                 ChatUtil.format(ConfigValues.bossbarTitle),
                 BarColor.valueOf(ConfigValues.bossbarColor.toUpperCase()),
                 BarStyle.SOLID);
 
-    }
-
-    public static void addPlayerToBossBar(Player player) {
-        createBossBar();
         bossBar.addPlayer(player);
+        bossBar.addPlayer(checker);
     }
 
-    public static void removePlayerFromBossBar(Player player) {
-        bossBar.removePlayer(player);
+    public static void removeBossBar(Player player, Player checker) {
+        if (bossBar != null) {
+            bossBar.removePlayer(player);
+            bossBar.removePlayer(checker);
+        }
     }
 
 }

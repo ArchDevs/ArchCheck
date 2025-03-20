@@ -1,4 +1,4 @@
-package me.arch.archcheck.utils;
+package me.arch.archcheck.logic;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

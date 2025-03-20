@@ -2,14 +2,13 @@ package me.arch.archcheck.commands.subcommands;
 
 import me.arch.archcheck.managers.CheckManager;
 import me.arch.archcheck.commands.SubCommand;
+import me.arch.archcheck.utils.BossBarUtil;
 import me.arch.archcheck.utils.ChatUtil;
 import me.arch.archcheck.utils.config.ConfigValues;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-
-import java.util.UUID;
 
 public class StartSubCommand extends SubCommand {
     @Override
@@ -43,6 +42,8 @@ public class StartSubCommand extends SubCommand {
             player.teleport(new Location(world, xCord, yCord, zCord));
         }
 
+        BossBarUtil.createBossBar(player, checker);
+        CheckManager.applyEffects(player);
         CheckManager.startCheck(player.getUniqueId(), checker.getUniqueId());
     }
 }

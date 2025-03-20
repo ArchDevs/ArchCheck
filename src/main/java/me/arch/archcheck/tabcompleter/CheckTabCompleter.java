@@ -1,4 +1,4 @@
-package me.arch.archcheck.commands;
+package me.arch.archcheck.tabcompleter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
