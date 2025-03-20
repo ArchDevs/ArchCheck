@@ -1,5 +1,5 @@
 
-# ArchCheck – Advanced Player Checking Plugin
+# ArchCheck – Lightweight Player Checking Plugin
 
 **ArchCheck** is a Minecraft plugin that assists server administrators in detecting potential hackers. It provides tools needed for moderating gameplay and ensuring a balanced environment by allowing staff members to scan and observe suspicious players.
 
