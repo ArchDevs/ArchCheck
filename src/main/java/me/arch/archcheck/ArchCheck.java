@@ -6,6 +6,8 @@ import me.arch.archcheck.managers.CommandManager;
 import me.arch.archcheck.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.time.LocalDateTime;
+
 public final class ArchCheck extends JavaPlugin {
     @Getter // Lombok impl for getting instance
     private static ArchCheck instance; // Var for fast class access
@@ -17,6 +19,9 @@ public final class ArchCheck extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        System.out.println("Plugin starting...");
+        long startTime = System.currentTimeMillis();
+
         saveDefaultConfig();
         getConfig().options().copyDefaults();
 
@@ -30,6 +35,8 @@ public final class ArchCheck extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerBlockListener(), this);
+
+        System.out.println(String.format("Plugin loaded in: %s seconds", startTime - System.currentTimeMillis()));
     }
 
     @Override
